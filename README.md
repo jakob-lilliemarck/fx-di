@@ -1,10 +1,10 @@
-# di
+# fx-di
 
 A minimal, async, type-keyed dependency injection container.
 
 ## What it does
 
-`di` wires up an object graph for you. You register a provider for each type,
+`fx-di` wires up an object graph for you. You register a provider for each type,
 and the container resolves them in the right order on demand.
 
 - **Automatic wiring** — a provider can ask for its dependencies with
@@ -18,13 +18,13 @@ and the container resolves them in the right order on demand.
 Add it:
 
 ```sh
-cargo add di futures
+cargo add fx-di futures
 ```
 
 Providers return `futures::future::BoxFuture`, so you'll want `futures` too.
 
 ```rust
-use di::Container;
+use fx_di::Container;
 use futures::future::BoxFuture;
 use std::sync::Arc;
 
@@ -36,11 +36,11 @@ struct B {
     _a: A,
 }
 
-fn provide_a(_: &mut Container) -> BoxFuture<'_, di::ProviderResult<A>> {
+fn provide_a(_: &mut Container) -> BoxFuture<'_, fx_di::ProviderResult<A>> {
     Box::pin(async { Ok(A) })
 }
 
-fn provide_b(c: &mut Container) -> BoxFuture<'_, di::ProviderResult<Arc<B>>> {
+fn provide_b(c: &mut Container) -> BoxFuture<'_, fx_di::ProviderResult<Arc<B>>> {
     Box::pin(async {
         let a = c.get::<A>().await?;
         Ok(Arc::new(B { _a: a }))
@@ -57,7 +57,7 @@ fn main() {
 }
 ```
 
-`di` is runtime-agnostic — use tokio, async-std, or any executor (the example
+`fx-di` is runtime-agnostic — use tokio, async-std, or any executor (the example
 uses `futures::executor::block_on`).
 
 ### API

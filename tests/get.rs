@@ -2,8 +2,8 @@ use std::error::Error;
 use std::sync::Arc;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
-use di::{Container, ProviderError, ProviderResult};
 use futures::future::BoxFuture;
+use fx_di::{Container, ProviderError, ProviderResult};
 
 mod common;
 use common::{

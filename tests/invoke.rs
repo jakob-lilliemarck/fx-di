@@ -1,8 +1,8 @@
 use std::sync::Arc;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
-use di::{Container, InvokeError, InvokeResult};
 use futures::future::BoxFuture;
+use fx_di::{Container, InvokeError, InvokeResult};
 
 mod common;
 use common::{A, counter_invokable, provide_a};

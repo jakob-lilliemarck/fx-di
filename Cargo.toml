@@ -1,5 +1,5 @@
 [package]
-name = "di"
+name = "fx-di"
 version = "0.0.0"
 edition = "2024"
 description = "A minimal, async, type-keyed dependency-injection container with cycle detection."

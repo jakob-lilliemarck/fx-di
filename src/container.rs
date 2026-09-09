@@ -60,7 +60,7 @@ impl Container {
     {
         let type_name = std::any::type_name::<T>();
         tracing::Span::current().record("type_name", type_name);
-        tracing::debug!("di::Container::provide");
+        tracing::debug!("fx_di::Container::provide");
 
         self.providers.insert(
             TypeId::of::<T>(),
@@ -84,7 +84,7 @@ impl Container {
 
         tracing::Span::current().record("type_name", type_name);
         tracing::debug!(
-            message = "di::Container::get",
+            message = "fx_di::Container::get",
             resolution_path = ?self.resolution_path
         );
 
@@ -140,7 +140,7 @@ impl Container {
     where
         F: for<'a> FnOnce(&'a mut Container) -> BoxFuture<'a, InvokeResult> + Send + Sync + 'static,
     {
-        tracing::debug!(message = "di::Container::invokable");
+        tracing::debug!(message = "fx_di::Container::invokable");
 
         self.invokables.push(Box::new(f))
     }
@@ -150,7 +150,7 @@ impl Container {
     /// Stops at the first error.
     #[instrument(level = "debug", skip_all)]
     pub async fn invoke(&mut self) -> InvokeResult {
-        tracing::debug!(message = "di::Container::invoke");
+        tracing::debug!(message = "fx_di::Container::invoke");
 
         let invokables = std::mem::take(&mut self.invokables);
         for invokable in invokables {

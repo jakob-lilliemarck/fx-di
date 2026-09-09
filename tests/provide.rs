@@ -1,7 +1,7 @@
 use std::sync::Arc;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
-use di::Container;
+use fx_di::Container;
 
 mod common;
 use common::{A, counter_provider};

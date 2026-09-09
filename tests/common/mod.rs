@@ -3,8 +3,8 @@
 use std::sync::Arc;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
-use di::{Container, InvokeResult, ProviderResult};
 use futures::future::BoxFuture;
+use fx_di::{Container, InvokeResult, ProviderResult};
 
 #[derive(Clone)]
 pub struct A;
