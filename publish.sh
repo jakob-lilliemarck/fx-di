@@ -23,7 +23,7 @@ fi
 
 # --- Quality gates ---
 echo "Checking formatting..."
-cargo fmt --check || err "cargo fmt --check failed"
+cargo fmt --check || err "code is not formatted — run 'cargo fmt', review the diff, and commit it"
 
 echo "Linting..."
 cargo clippy --all-targets -- -D warnings || err "cargo clippy failed"
