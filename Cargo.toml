@@ -1,6 +1,6 @@
 [package]
 name = "fx-di"
-version = "0.0.0"
+version = "0.0.1"
 edition = "2024"
 description = "A minimal, async, type-keyed dependency-injection container with cycle detection."
 license = "MIT"
