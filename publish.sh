@@ -35,7 +35,7 @@ echo "Building docs..."
 cargo doc --no-deps || err "cargo doc failed"
 
 # --- Version bump ---
-current_version=$(cargo pkgid | cut -d'#' -f2) || err "could not determine current version"
+current_version=$(sed -n 's/^version = "\([^"]*\)"/\1/p' Cargo.toml)
 echo "Current version: $current_version"
 read -rp "Bump major, minor, or patch? " part
 
